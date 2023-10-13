@@ -2,6 +2,8 @@
 
 # 1. Home screen:
 
+ <img width="900" src="https://github.com/einav242/BIG-DATA/blob/main/images/Astronomical%20Events%20%26%20Alerts.jpg">
+
 
 On the home screen you can see the logo, information about the pizzeria, in addition the user can enter initial details to start the order, and by pressing the button go to the order page.
 Before moving, I perform the following tests:
@@ -10,6 +12,8 @@ If one of the data boxes is empty - a notification is sent to the user - please 
 In addition, there is the possibility of an admin login - which transfers to a management page, when the admin data is entered, a request is sent to the server which sends a query to the DB if the user really exists in the admin table and if his details are correct, only if the user exists and the password matches will the admin move to the next page.
 
 # 2. Admin page:
+
+ <img width="900" src="https://github.com/einav242/BIG-DATA/blob/main/images/Astronomical%20Events%20%26%20Alerts.jpg">
 
 
 On the page you can see:
@@ -21,6 +25,9 @@ On the page you can see:
    
 # 3. Order page:
 
+ <img width="900" src="https://github.com/einav242/BIG-DATA/blob/main/images/Astronomical%20Events%20%26%20Alerts.jpg">
+
+
 We will reach this page after entering the first details on the home screen.
 The customer can now start placing the order, which includes choosing a pizza size, choosing toppings and choosing a way to receive the order.
 In addition, the customer can use the Calculate Total button to calculate the amount of his order according to his choices. And the customer can also add a note to the order.
@@ -29,6 +36,8 @@ Before moving, I perform the following tests:
 If a pizza size is not selected - a notification is sent to the user - please select a pizza size. If no way to receive the order was entered - a notification is sent to the user - please choose a way to receive the order.
 
 # 4. Order status:
+
+ <img width="900" src="https://github.com/einav242/BIG-DATA/blob/main/images/Astronomical%20Events%20%26%20Alerts.jpg">
 
 
 As you can see, all the order data appears on the screen and is updated every 15 seconds, in addition the customer can update the order, change pizza size or change toppings.
