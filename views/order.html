@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pizza Order Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/style-order.css">
+</head>
+<body>
+    <!---------------------------- כותרת --------------------->
+    <header>
+        <img src="images-home/logo.jpg" id="logo">
+        <div class="text-container">
+            <h1 class="near-logo">contuct us</h1>
+            <h1 class="number">052-4292495</h1>
+        </div>
+        <img src="images-home/phone.jpg" id="phone">
+    </header>
+
+
+    <div class="all-page">
+        
+        <!-- -------------------- בחירת ההזמנה ---------------------- -->
+        
+        <div class="image-order">
+            <img src = "images-order/Orderpage.jpg" id="image-order-page"> 
+        /</div>
+        
+        <div class="order">
+            <div class="pizza-size">
+                <h2 class="pizza-size-h">Select Pizza Size:</h2>
+
+                <label for="personalPizza">Personal Pizza (₪25)</label>
+                <input type="radio" id="personalPizza" name="pizzaSize" value="25">
+
+                <label for="familyPizza">Family Pizza (₪45)</label>
+                <input type="radio" id="familyPizza" name="pizzaSize" value="45">
+                
+            </div>
+ 
+            <div class="pizza-Toppings">
+                <h2 class="SelectToppingsh">Select Toppings:</h2>
+                <p class="topping-data">The first two toppings are free, Starting from the third topping each topping cost an additional ₪3 </p>
+                <label for="tomatoes">Tomatoes</label>
+                <input type="checkbox" id="tomatoes" name="topping" value="3">
+
+                <label for="olives">Olives</label>
+                <input type="checkbox" id="olives" name="topping" value="3">
+
+                <label for="onions">Onions</label>
+                <input type="checkbox" id="onions" name="topping" value="3">
+
+                <label for="mozzarella">Mozzarella</label>
+                <input type="checkbox" id="mozzarella" name="topping" value="3">
+
+                <label for="parmesan">parmesan</label>
+                <input type="checkbox" id="parmesan" name="topping" value="3">
+
+            </div>
+             
+            <div class="cost">
+                <h2 class="Costh">Total Cost:</h2>
+                <p id="totalCost">₪0</p>
+                <button onclick="calculateTotal()">Calculate Total</button>
+             
+            </div>
+ 
+            <div class="image-order-down">
+            <img src = "images-order/pizza.jpg" id= "image-order-pizza"> 
+            <img src = "images-order/pizza2.jpg" id= "image-order-pizza2"> 
+            </div>
+
+           
+             <!-- --------------------------- חישוב המחיר --------------------------->
+            <script>
+                
+                function calculateTotal() {
+                    const pizzaSize = parseFloat(document.querySelector('input[name="pizzaSize"]:checked').value);
+                    var toppings = Array.from(document.querySelectorAll('input[name="topping"]:checked')).reduce((total, topping) => total + parseFloat(topping.value), 0);
+                    if (toppings > 6) {
+                        toppings -= 6; // Deduct 6 shekels from the toppings
+                    }else{
+                        toppings=0;    
+                    }
+                    const totalCost = pizzaSize + toppings;
+                    document.getElementById('totalCost').textContent = totalCost;
+                    localStorage.setItem('totalCost', totalCost);
+                    
+            
+                }
+
+            </script>
+
+            <!-- -------------------------------- משלוח -------------------------- -->
+            <h1 class="Choose">Choose how you would like to receive the pizza</h1>
+            <div class="dlivry">
+               
+                <div class="dlivry1">
+                    <img src="images-home/about-us-2.jpg" id="dlivry1">
+                    <label for="DELIVERY">Delivery</label>
+                    <input type="radio" id="DELIVERY" name="dlivry" >
+                </div>
+                <p class="or"> OR </p>
+                <div class="dlivry2">
+                    <img src="images-order/dlivery2.png" id="dlivry1">
+                    <label for="CARRYOUT">TakeAway</label>
+                    <input type="radio" id="CARRYOUT" name="dlivry" >
+                </div>
+
+            </div>
+
+
+             <!-- ------------------------הוספת הערה ------------------------>
+            <div class="Comment">
+                <h2 id="comment-header">Add a Comment:</h2>
+                <div class="comment-input">
+                    <textarea id="input1" rows="4" placeholder="Write your comment here..."></textarea>
+                    <button type="button" class="add-comment" onclick="addComment()">Add</button>
+                </div>
+            </div>
+        
+            <script>
+
+            // --------------------------------הוספת תגובה -----------------------------
+                var enter = false;
+                localStorage.setItem('enter', enter);
+                function addComment() {
+                    enter = true;
+                    localStorage.setItem('enter', enter);
+                    // גישה לתוכן שנרשם בתיבת הטקסט
+                    var commentText = document.getElementById("input1").value;
+                    // וידוא שהתיבה לא ריקה
+                    if (commentText.trim() !== "") {
+                        // שמירת ההערה במשתנה
+                        var lastComment = commentText;
+                        localStorage.setItem('lastComment', lastComment);
+                        document.getElementById('comment-header').textContent = 'Comment saved successfully!';
+    
+                        // מחיקת תיבת הטקסט והכפתור
+                        var commentInput = document.querySelector(".comment-input");
+                        commentInput.style.display = "none";
+                }
+            }
+            </script>
+
+        
+
+             <!------------------------כפתור אישור הזמנה  ------------------------------ -->
+        
+            <button type="button" class="btn" onclick="goStatusPage()">confirm order</button>
+            <script>
+                // JavaScript function to navigate to status.html
+                function goStatusPage() {
+                
+                        // ----------------בדיקה שבאמת נבחר גודל של פיצה--------------------------
+                        function validatePizzaSize() {
+                            // Check if a pizza size is selected
+                            const pizzaSizeElements = document.getElementsByName("pizzaSize");
+                            for (const pizzaSizeElement of pizzaSizeElements) {
+                                if (pizzaSizeElement.checked) {
+                                    pizzaSize = pizzaSizeElement.value;
+                                    return true; // Proceed with form submission
+                                }
+                            }
+
+                            // Display a warning message if no pizza size is selected
+                            alert("Please select a pizza size.");
+                            return false; // Prevent form submission
+                        }
+
+                        //------------------בדיקה שבאמת נבחר אופציה לשילוח ------------------
+                        // Function to validate delivery or takeaway option
+                        function validateDeliveryOption() {
+                            const deliveryOptionElements = document.getElementsByName("dlivry");
+                            for (const deliveryOptionElement of deliveryOptionElements) {
+                                if (deliveryOptionElement.checked) {
+                                    return true; // Delivery or TakeAway option selected, proceed with form submission
+                                }
+                            }
+
+                            // Display a warning message if neither Delivery nor TakeAway is selected
+                            alert("Please select either Delivery or TakeAway.");
+                            return false; // Prevent form submission
+                        }
+ 
+
+                        //------------------------- אם מילאו הכל שמור את הנתונים ---------------------
+                        if(validatePizzaSize() && validateDeliveryOption()){
+                            // Initialize variables for pizza size and toppings
+                            var mozzarella =  document.getElementById("mozzarella").checked ? "yes" : "no";
+                            var parmesan = document.getElementById("parmesan").checked ? "yes" : "no";
+                            var tomatoes = document.getElementById("tomatoes").checked ? "yes" : "no";
+                            var onions =document.getElementById("onions").checked ? "yes" : "no";
+                            var olives = document.getElementById("olives").checked ? "yes" : "no";
+                            localStorage.setItem('mozzarella', mozzarella);
+                            localStorage.setItem('parmesan',parmesan );
+                            localStorage.setItem('tomatoes',tomatoes );
+                            localStorage.setItem('onions', onions);
+                            localStorage.setItem('olives',olives );
+
+                            // Check which pizza size is selected
+                            const pizzaSizeElements = document.getElementsByName("pizzaSize");
+                            for (const pizzaSizeElement of pizzaSizeElements) {
+                                if (pizzaSizeElement.checked) {
+                                    pizzaSize = pizzaSizeElement.value;
+                                    break; // Exit loop once we've found the selected size
+                                }
+                            }
+                            var pizzaSize =  (pizzaSize == 45) ? "Large" : "Small";
+                            localStorage.setItem('pizzaSize', pizzaSize);
+                            calculateTotal();
+                            window.location.href = '/Status';
+                        }
+                    }
+            </script>
+        
+           <!-- ---------------------- תמונות   ---------------------------->
+            <div class="image-order-end">
+                <img src = "images-order/order-end.jpg" id= "image-orderend-pizza"> 
+                <img src = "images-order/order-end2.jpg" id= "image-orderend-pizza2"> 
+            </div>
+        
+        </div>
+    </div>
+
+    
+    <footer>
+        <p> Copyright &copy; 2014, All Rights Resvrevd</p>
+    </footer>
+</body>
+</html>

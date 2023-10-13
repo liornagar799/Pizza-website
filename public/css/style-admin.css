@@ -1,0 +1,167 @@
+/* Basic CSS for styling the menu and content */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* ---------------------------כותרת-------------------**/
+header {
+    background-color: rgb(29, 104, 87);
+    padding: 10px;
+    display: flex;/*the elements inside the container can adjust their size and position dynamically */
+    align-items: center; /* Vertically align elements in the middle */
+}
+ 
+ /* ---------------------------צרו קשר + מספר טלפון-------------------**/
+.text-container {
+    font-family: Arial Rounded MT Bold ;
+    text-align: center;
+    margin-left: 750px;
+    color: rgb(250, 247, 247);
+    font-weight: bold;
+    font-size: 12px;
+    display: flex; /* Create a flex container for the text elements */
+    flex-direction: column; /* Stack text elements vertically */
+    
+}
+
+/* --------------------------- צרו קשר -------------------**/
+.near-logo{
+    margin-top: -10px;
+}
+ /* ---------------------------  המספר טלפון -------------------**/
+.number{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* ---------------------------הרווח בין צרו קשר ל- מספר טלפון-------------------**/
+.near-logo,.number {
+    margin-bottom: -10px; /* Adjust this value to control the spacing between columns */
+}
+
+/* ---------------------------   לוגו -----------------**/
+#logo {
+    width: 250px; /* גובה אופציונלי */
+    height:120px; /* רוחב אופציונלי */
+    border-radius: 50%; /* עיגול פינות */
+    overflow: hidden; /* הסתרת חלקים מחוץ לעיגול אם התמונה אינה ריבועית */
+    
+ /* ---------------------------  תמונת טלפון -------------------**/   
+}
+#phone {
+    margin-left: 20px;
+    width: 50px; /* גובה אופציונלי */
+    height:50px; /* רוחב אופציונלי */
+    
+    
+}
+
+/* -------------------------------רקע ----------------------- */
+
+  .all-page{
+    background-color:rgb(247, 229, 197);
+    padding-bottom: 20px;
+}
+
+/* -------------------------תמונה ראשית ----------------------- */
+#WelcomeAdmin{
+    width: 100%;
+    display: flex;
+    align-items: center; /* Vertically align elements in the middle */
+    margin-right: 50px;
+    border: 2px solid  rgb(15, 16, 16); /* Add a 2px solid border */
+    border-radius: 15px; /* Add rounded corners */
+   
+}   
+
+/* ----------------------------עשרת ההזמנות ----------------------------- */
+.orders {
+    margin: 0 auto; /* מרכוז את התוכן ברוחב */
+    border: 2px solid #000; /* גבול סגור שחור */
+    padding: 10px; /* מרווח בתוך הגבול */
+    margin-bottom: 10px; /* מרווח בין ההזמנות */
+    background-color:rgb(247, 229, 197);
+    width: 50%; /* רוחב של 30% מרחב המסך */
+   
+}
+
+/* ----------------------הכותרת ------------------------- */
+
+#statush{
+    text-align: center; /* מרכז את הטקסט באופן אופטימלי */
+    margin: 0 auto; /* מרכוז את התוכן ברוחב */
+    padding: 10px; /* מרווח בתוך הגבול */
+    margin-top: 20px;
+    display: block;
+}
+
+/* -----------------------------------ההזמנה הבאה --------------------------------- */
+.get_next_order {
+    text-align: center;
+    color:black;
+    padding: 20px;
+    margin: 20px auto;
+    width: 40%;
+    border: 2px solid  rgb(15, 16, 16); /* Add a 2px solid border */
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+#getNextOrderButton {
+    text-align: center;
+    color: rgb(28, 27, 27); /* צבע טקסט לבן */
+    border: 2px solid rgb(16, 16, 16); /* גבול לבן לכפתור */
+    padding: 10px 20px; /* מרווח פנימי לכפתור */
+    cursor: pointer; /* שנה את הסמל לסמן של "יד" כאשר עוברים על הכפתור */
+}
+
+#nextOrderResult {
+    display: none; /* התוצאה מוסתרת בתחילה */
+    font-family: Arial, sans-serif; /* גופן טקסט */
+    margin: 20px;
+    
+}
+
+
+
+
+/* -----------------------------שינוי סטטוס להזמנה------------- */
+
+.Change_Order_Status{
+    text-align: center;
+    color:black;
+    padding: 20px;
+    margin: 20px auto;
+    width: 40%;
+    border: 2px solid  rgb(15, 16, 16); /* Add a 2px solid border */
+    border-radius: 15px;
+}
+
+/* --------------------------------הכנסות יומיות ---------------------------- */
+.Daily_Revenue_Report{
+    text-align: center;
+    color:black;
+    padding: 20px;
+    margin: 20px auto;
+    width: 40%;
+    border: 2px solid  rgb(15, 16, 16); /* Add a 2px solid border */
+    border-radius: 15px;
+}
+
+
+#dailyRevenueResult{
+    display: none; /* התוצאה מוסתרת בתחילה */
+    font-family: Arial, sans-serif; /* גופן טקסט */
+    margin: 20px;
+}
+
+  /*------------------------כותרת תחתונה------------------ */
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /*ריווח של פריטים  */
+    align-items: center;
+    color: white;
+    background-color:  rgb(29, 104, 87);
+    
+}

@@ -1,0 +1,171 @@
+    /* Basic CSS for styling the menu and content */
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+     /* ---------------------------כותרת-------------------**/
+    header {
+        background-color: rgb(29, 104, 87);;
+        padding: 10px;
+        display: flex;
+        align-items: center; /* Vertically align elements in the middle */
+    }
+
+     /* ---------------------------צרו קשר + מספר טלפון-------------------**/
+    .text-container {
+        font-family: Arial Rounded MT Bold ;
+        text-align: center;
+        margin-left: 750px;
+        color: rgb(250, 247, 247);
+        font-weight: bold;
+        font-size: 12px;
+        display: flex; /* Create a flex container for the text elements */
+        flex-direction: column; /* Stack text elements vertically */
+       
+    }
+
+    /* --------------------------- צרו קשר -------------------**/
+    .near-logo{
+        margin-top: -10px;
+        color: white;
+    }
+
+     /* ---------------------------  המספר טלפון -------------------**/
+    .number{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    /* ---------------------------הרווח בין צרו קשר ל- מספר טלפון-------------------**/
+    .near-logo,.number {
+        margin-bottom: -10px; /* Adjust this value to control the spacing between columns */
+    }
+
+    /* ---------------------------   לוגו -----------------**/
+    #logo {
+        width: 250px; /* גובה אופציונלי */
+        height:120px; /* רוחב אופציונלי */
+        border-radius: 50%; /* עיגול פינות */
+        overflow: hidden; /* הסתרת חלקים מחוץ לעיגול אם התמונה אינה ריבועית */
+        
+        
+    }
+
+    /* ---------------------------  תמונת טלפון -------------------**/   
+    #phone {
+        margin-left: 20px;
+        width: 50px; /* גובה אופציונלי */
+        height:50px; /* רוחב אופציונלי */
+        
+        
+    }
+/* ---------------תמונה ראשית -----------------------------*/
+
+.all-page{
+    background-color:  rgb(177, 94, 78);
+
+}
+
+#image-status-page{
+        width: 100%;
+        display: flex;
+        align-items: center; /* Vertically align elements in the middle */
+        margin-right: 50px;
+        border: 2px solid  rgb(15, 16, 16); /* Add a 2px solid border */
+        border-radius: 15px; /* Add rounded corners */
+       
+    }   
+
+
+/**-----------------פרטי הזמנה ----------------------**/
+
+ 
+h1 {
+    color:black;
+    text-align: center;
+    margin-top: 50px;
+    
+
+}
+
+/* ---------------- כל החלק כולל העידכון ------------------ */
+#order-details {
+    background-color: rgba(237, 245, 249, 0.694);
+    color:black;
+    padding: 20px;
+    margin: 20px auto;
+    width: 40%;
+    border: 2px solid  rgb(15, 16, 16); /* Add a 2px solid border */
+    border-radius: 15px;
+}
+
+
+/* -------------------עידכון הזמנה ---------------------- */
+
+
+.modal-content{
+    margin-top: 5px;
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+/* -------------האופציות בחירה ---------------- */
+select{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+/* -------------הכותרות ---------------- */
+label{
+    margin-top: 5px;
+}
+
+button {
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
+
+/* *------------------- 2 תמונות בסוף -------------------------------*****/
+
+.image-order-end{
+    display: flex;
+    align-items: center; /* Vertically align elements in the middle */
+}
+#image-orderend-pizza{
+    width: 35%; /* גובה אופציונלי */
+    height: 40%; /* רוחב אופציונלי */
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 150px;
+
+}
+#image-orderend-pizza2{
+    width: 35%; /* גובה אופציונלי */
+    height: 40%; /* רוחב אופציונלי */
+    margin-right: 10px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+} 
+
+ /*------------------------כותרת תחתונה------------------ */
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    justify-content: space-between;
+    background-color:  rgb(29, 104, 87);
+    
+}

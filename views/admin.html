@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>my pizza Website</title>
+    <link rel="stylesheet" type="text/css" href="/css/style-admin.css">
+    
+
+</head>
+
+<body>
+    <!------------------------------ כותרת --------------------------->
+    <header>
+        <img src="images-home/logo.jpg" id="logo">
+        <div class="text-container">
+            <h1 class="near-logo">contuct us</h1>
+            <h1 class="number">052-4292495</h1>
+        </div>
+        <img src="images-home/phone.jpg" id="phone">
+    </header>
+
+    <div class="all-page">
+        <div class="images-status">
+            <img src = "images-admin/WelcomeAdmin.jpg" id="WelcomeAdmin"> 
+
+        </div>
+        
+        <h1 id="statush">Status of the last 10 orders</h1>
+        <div id="orders-container"></div>
+        <script>
+
+            // ----------------------------------------הזמנות אחרונות 10 ----------------------------------
+           // המערך המכיל את ההזמנות הנוכחיות
+            var currentOrders = [];
+
+            // פונקציה שמבצעת את השליחה לשרת ועדכון ההזמנות
+            function fetchAndUpdateOrders() {
+                fetch('/orders_status')
+                    .then(res => res.text())
+                    .then(data => {
+                        // פיצול הטקסט למערך של ההזמנות
+                        const orders = data.split('\n');
+
+                        // currentOrders יכיל את 10 האלמנטים הראשונים ממערך ההזמנות
+                        //.slice(0, 10) is used to create a new array that includes elements from the beginning 
+                        //(index 0) up to, but not including, the 10th elemen
+                        // map iterates over each element in the sliced array and applies the createOrderElement 
+                        currentOrders = orders.slice(0, 10).map(orderText => createOrderElement(orderText));
+
+                        // עדכון התצוגה
+                        updateOrdersDisplay(currentOrders);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+            // פונקציה לעדכון התצוגה בהתאם למערך ההזמנות
+            function updateOrdersDisplay(ordersArray) {
+                clearOrdersContainer();
+                ordersArray.forEach(orderElement => {
+                    const ordersContainer = document.getElementById('orders-container');
+                    // עבור כל הזמנה, תוסיף אותה לתצוגה 
+                    ordersContainer.appendChild(orderElement);
+                });
+            }
+
+            // פונקציה למחיקת כל ההזמנות מהתצוגה
+            function clearOrdersContainer() {
+                const ordersContainer = document.getElementById('orders-container');
+                while (ordersContainer.firstChild) {
+                    //  תמחוק כל ילד שקיים אצלו מהתצוגה
+                    ordersContainer.removeChild(ordersContainer.firstChild);
+                }
+            }
+
+            // פונקציה ליצירת אלמנט HTML להזמנה מטקסט מסוים
+            function createOrderElement(orderText) {
+                //שורה זו יוצרת DIV חדש
+                const orderElement = document.createElement('div');
+                //מגדיר את תכונת המחלקה של האלמנט - CSS
+                orderElement.className = 'orders';
+                
+                // הכנסת טקסט ההזמנה
+                orderElement.innerHTML = orderText;
+                
+                return orderElement;
+            }
+
+            // הפעלת הפונקציה הראשונית כאשר הדף נטען
+            fetchAndUpdateOrders();
+
+            // עדכון ההזמנות כל 15 שניות
+            setInterval(fetchAndUpdateOrders, 15000);
+
+        </script>
+        <!-- ------------------------------------- קבלת ההזמנה הבאה---------------------------------- -->
+                
+            <div class="get_next_order">
+            <h1>Get Next Order</h1>
+            <button id="getNextOrderButton" onclick="getNextOrder()">Get</button>
+
+            <div id="nextOrderResult" style="display: none;"></div>
+            </div>
+        <script>
+
+            // ------------------------------------ קבלת ההזמנה הבאה------------------------------------
+            function getNextOrder() {
+                    
+             // שליחת הבקשה לשרת
+             fetch('/nextOrder')
+                    .then(res => res.text())
+                    .then(data => {
+                    // Update the client-side UI with the received data
+                    const nextOrderResult = document.getElementById('nextOrderResult');
+                    nextOrderResult.innerHTML = `${data}`;
+                    //כדי להציג אלמנט מוסתר או לחשוף תוכן שהיה מוסתר בעבר עם  dispay: none
+                    nextOrderResult.style.display = 'block';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+
+                }
+
+        </script>
+         <!-- ------------------------------------- שינוי סטטוס להזמנה----------------------------------------- -->
+           
+        <div class="Change_Order_Status" >
+           <h1>Change Order Status</h1>
+           <form id="changeOrderStatusForm">
+               <label for="orderID">Order ID:</label>
+               <input type="text" id="orderID" name="orderID" required><br><br>
+               
+               <label for="newStatus">New Status:</label>
+               <select id="newStatus" name="newStatus" required>
+                   <option value='Received'>Received</option>
+                   <option value='In progress'>In Progress</option>
+                   <option value='Finished'>Finished</option>
+               </select><br><br>
+               
+               <button type="button" onclick="changeOrderStatus()">Change Status</button>
+           </form>
+           
+           <div id="statusChangeResult"></div>
+
+          </div> 
+           <script>
+            // ------------------------------------- שינוי סטטוס להזמנה-----------------------------------------
+               function changeOrderStatus() {
+                   const orderID = document.getElementById('orderID').value;
+                   const newStatus = document.getElementById('newStatus').value;
+
+                   // בדיקה אם orderID הוא מספר תקין
+                  if (!/^\d+$/.test(orderID)) {
+                      alert('Order ID must be a valid number.');
+                      return;
+                  }
+
+                    // Build the URL with query parameters
+                    var adminUrl = '/changeStatus?orderID=' + encodeURIComponent(orderID) + '&newStatus=' + encodeURIComponent(newStatus);
+                    // Navigate to the Admin page with query parameters
+                    window.location.href = adminUrl;
+
+                   const statusChangeResult = "The Status has successfully changed";
+                   const resultDiv = document.getElementById('statusChangeResult');
+                   //מחליף את התוכן הקודם
+                   resultDiv.innerHTML = statusChangeResult;
+                   // לאפס את התיבה 
+                   document.getElementById('orderID').value = '';
+               }
+           </script>
+
+
+<!-- ----------------------------------------הכנסה לפי תאריך ----------------- -->
+        <div class="Daily_Revenue_Report">
+          <h1>Daily Revenue Report</h1>
+          <form id="dailyRevenueReportForm">
+              <label for="date">Date:</label>
+              <!-- בחירת תאריך  -->
+              <input type="date" id="date" name="date" required><br><br>
+              
+              <button type="button" onclick="getDailyRevenue()">Get Daily Revenue</button>
+          </form>
+
+          <div id="dailyRevenueResult"></div>
+        </div>
+          <script>
+              function getDailyRevenue() {
+                  const date = document.getElementById('date').value;
+                  var adminUrl = '/getDailyRevenue?date=' + encodeURIComponent(date);
+                   // שליחת הבקשה לשרת
+                    fetch(adminUrl)
+                            .then(res => res.text())
+                            .then(data => {
+                            // Update the client-side UI with the received data
+                            const nextOrderResult = document.getElementById('dailyRevenueResult');
+                            nextOrderResult.innerHTML = `${data}`;
+                            //כדי להציג אלמנט מוסתר או לחשוף תוכן שהיה מוסתר בעבר עם  dispay: none
+                            nextOrderResult.style.display = 'block';
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
+
+                        }
+
+          </script>
+    
+    
+    </div>
+
+
+
+
+    <footer>
+        <p> Copyright &copy; 2014, All Rights Resvrevd</p>
+    </footer>
+    
+
+</body>
+</html>
+

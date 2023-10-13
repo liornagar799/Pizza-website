@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pizza Order Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/style-status.css">
+    
+</head>
+<body>
+    <header>
+        <!------------------------------ כותרת --------------------------->
+        <img src="images-home/logo.jpg" id="logo">
+        <div class="text-container">
+            <h1 class="near-logo">contuct us</h1>
+            <h1 class="number">052-4292495</h1>
+        </div>
+        <img src="images-home/phone.jpg" id="phone">
+    </header>
+
+
+    <div class="all-page">
+        <div class="order">  
+                <!--------------------- תמונות תצוגה ------------------>
+            <div class="images-status">
+                <img src = "images-status/status.jpg" id="image-status-page"> 
+            </div>
+        </div>    
+
+        
+
+        <h1>Order Information</h1>
+        <div id="order-details">
+         
+            <!----------------------- נתוני ההזמנה ----------------------->
+            <p><strong>Order Number:</strong> <span id="order-number"></span></p>
+            <p><strong>Customer Name:</strong> <span id="customer-name"></span></p>
+            <p><strong>Status:</strong> <span id="order-status"></span></p>
+            <p><strong>Pizza Size:</strong> <span id="pizza-size"></span></p>
+            <p><strong>Olives:</strong> <span id="olives"></span></p>
+            <p><strong>Onion:</strong> <span id="onion"></span></p>
+            <p><strong>Parmesan:</strong> <span id="parmesan"></span></p>
+            <p><strong>Tomatoes:</strong> <span id="tomatoes"></span></p>
+            <p><strong>Mozzarella:</strong> <span id="mozzarella"></span></p>
+            <p><strong>Price:</strong> <span id="price"></span></p>
+            <p><strong>Comment:</strong> <span id="last-Comment"></span></p>
+
+            
+        <script>
+            //---------------------- יצירת משתנה שמכיל את כל הנתונים ---------------------
+            var orderData = {
+                orderNumber: "",
+                customerName: "",
+                orderStatus: "",
+                pizzaSize: "",
+                olives: "",
+                onion: "",
+                parmesan: "",
+                tomatoes: "",
+                mozzarella: "",
+                price: 0,
+                startTime: "",
+                lastComment: ""
+            };
+
+            // <!--------------------- לקיחת נתנוי ההזמנה ------------------- -->
+            
+            
+                document.getElementById("customer-name").textContent = localStorage.getItem('customerName');
+                document.getElementById('order-status').textContent = 'Received';
+                document.getElementById("pizza-size").textContent = localStorage.getItem('pizzaSize');
+                document.getElementById("olives").textContent = localStorage.getItem('olives');
+                document.getElementById("onion").textContent = localStorage.getItem('onions');
+                document.getElementById("parmesan").textContent = localStorage.getItem('parmesan');
+                document.getElementById("tomatoes").textContent = localStorage.getItem('tomatoes');
+                document.getElementById("mozzarella").textContent = localStorage.getItem('mozzarella');
+                document.getElementById("price").textContent = localStorage.getItem('totalCost');
+                if (localStorage.getItem('enter') === 'true') {
+                document.getElementById("last-Comment").textContent = localStorage.getItem('lastComment');
+                }
+                if (localStorage.getItem('enter') === 'false'){
+                document.getElementById("last-Comment").textContent =" ";   
+                }
+
+                // -------------------------- הכנסת הנתונים למשתנה----------------------------
+                orderData.orderNumber = document.getElementById("order-number").textContent;
+                orderData.customerName = document.getElementById("customer-name").textContent;
+                orderData.orderStatus = document.getElementById('order-status').textContent;
+                orderData.pizzaSize = document.getElementById("pizza-size").textContent;
+                orderData.olives = document.getElementById("olives").textContent;
+                orderData.onion =document.getElementById("onion").textContent;
+                orderData.parmesan = document.getElementById("parmesan").textContent;
+                orderData.tomatoes = document.getElementById("tomatoes").textContent;
+                orderData.mozzarella=  document.getElementById("mozzarella").textContent;
+                orderData.price =  document.getElementById("price").textContent;
+                orderData.lastComment = document.getElementById("last-Comment").textContent;
+               
+                // שליחת הנתונים אל הדאתא בייס כהדף עולה
+                document.addEventListener('DOMContentLoaded', function () {
+                var orderUrl =  '/add-data?customerName=' + encodeURIComponent(orderData.customerName)
+                 + '&orderStatus=' + encodeURIComponent(orderData.orderStatus)
+                 + '&pizzaSize=' + encodeURIComponent(orderData.pizzaSize)
+                 + '&olives=' + encodeURIComponent(orderData.olives)
+                 + '&onion=' + encodeURIComponent(orderData.onion)
+                 + '&parmesan=' + encodeURIComponent(orderData.parmesan)
+                 + '&tomatoes=' + encodeURIComponent( orderData.tomatoes)
+                 + '&mozzarella=' + encodeURIComponent(orderData.mozzarella)
+                 + '&price=' + encodeURIComponent(orderData.price)
+                 + '&lastComment=' + encodeURIComponent(orderData.lastComment);
+                
+                
+                   // שליחת הבקשה לשרת
+                    fetch(orderUrl)
+                    .then(res => res.text())
+                    .then(data => {
+                        // הצבת מספר ההזמנה שחוזר בדף
+                        document.getElementById("order-number").textContent = data;
+                        orderData.orderNumber = data;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+
+                    // <!-- ---------------------  בדיקת סטטוס ההזמנה ושינוי התצוגה כל 15 שניות  ---------------------->
+                // Set up an interval to update the status every 15 seconds
+                setInterval(updateStatus, 15000);
+                 var orderUpdated = 'false';
+                // Function to update the status
+                function updateStatus() {
+                    var num = orderData.orderNumber;
+                    var updateStatusURL = '/order_update?ordernum=' + encodeURIComponent(num);
+                    // שליחת הבקשה לשרת
+                    fetch(updateStatusURL)
+                        .then(res => res.text())
+                        .then(data => {
+                            // Update the client-side UI with the received data
+                            document.getElementById('order-status').textContent = data;  
+                            if (data ==="In Progress"){
+                                if(orderUpdated == 'false'){
+                                    var titleElement3 = document.getElementById('updateh');
+                                    titleElement3.innerHTML = 'We are starting to prepare your order'; 
+                                    delteItems(); 
+                            
+                                }else{
+                                var titleElement1 = document.getElementById('updateh');
+                                titleElement1.innerHTML = 'We are starting to prepare your order';
+                                }
+                            }else if(data ==="Finished"){
+                                var titleElement2 = document.getElementById('updateh');
+                                titleElement2.innerHTML = 'Your order is ready';
+                            }      
+      
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+            });
+
+            </script>
+
+          
+            <!---------------------  כפתורים ותיבות  - האופציות של העידכון ------------------------>
+
+        <div id="update-modal" class="modal">
+            <div class="modal-content">
+                    <h2 id="updateh">you want to change your order?</h2>
+                    <form id="order-form">
+                        <label for="pizza-size">Pizza Size:</label>
+                        <select id="pizza-size-select" name="pizza-size">
+                            <option value="Small">Small</option>
+                            <option value="Large">Large</option>
+                        </select><br>
+                        <label for="olives">Olives:</label>
+                        <select id="olives-select" name="olives">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select><br>
+                        <label for="onion">Onion:</label>
+                        <select id="onion-select" name="onion">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select><br>
+                        <label for="parmesan">Parmesan:</label>
+                        <select id="parmesan-select" name="parmesan">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select><br>
+                        <label for="tomatoes">tomatoes:</label>
+                        <select id="tomatoes-select" name="tomatoes">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select><br>
+                        <label for="mozzarella">Mozzarella:</label>
+                        <select id="mozzarella-select" name="mozzarella">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select><br>
+                        <button type="button" class="btn1" onclick="goupdate()">save change</button>
+                    </form>
+            </div>
+        </div>
+           
+        
+        
+
+
+        <!---------------- עידכון נתונים של ההזמנה לאחר לחיצת הכפתור --------------- -->
+
+        <script>
+
+          function goupdate(){
+          
+            orderUpdated = 'true';
+            var mozzarellaSelect = document.getElementById("mozzarella-select");
+            var tomatoesSelect = document.getElementById("tomatoes-select");
+            var parmesanSelect = document.getElementById("parmesan-select");
+            var onionSelect = document.getElementById("onion-select");
+            var pizzasizeSelect = document.getElementById("pizza-size-select");
+            var olivesSelect = document.getElementById("olives-select");
+            
+            orderData.pizzaSize = pizzasizeSelect;
+            orderData.olives = olivesSelect;
+            orderData.onion = onionSelect;
+            orderData.parmesan = parmesanSelect;
+            orderData.tomatoes = tomatoesSelect;
+            orderData.mozzarella= mozzarellaSelect;
+            
+            //--------------------חישוב הסכום החדש ----------------------
+           
+            var totalPrice = 0;
+            var topping = 0;
+
+            // Check pizza size and add the base price
+            if (orderData.pizzaSize.value == "Large") {
+                totalPrice += 45;
+            } else {
+                totalPrice += 25;
+            }
+
+            // Check each add-on and add 3 shekels for each "yes"
+            if (orderData.olives.value == "Yes") {
+                topping += 3;
+            }
+
+            if (orderData.parmesan.value == "Yes") {
+                topping += 3;
+            }
+
+            if (orderData.tomatoes.value == "Yes") {
+                topping += 3;
+            }
+
+            if (orderData.mozzarella.value == "Yes") {
+                topping += 3;
+            }
+
+            if (orderData.onion.value == "Yes") {
+                topping += 3;
+            }
+
+            if (topping > 6) {
+                topping -= 6; // Deduct 6 shekels from the toppings
+            }else{
+                topping=0;    
+            }
+
+            totalPrice += topping;
+            orderData.price = totalPrice;
+
+          
+            // -------------------- ביצוע העידכון עצמו במסך ------------------------
+
+            updateScreenWithOrderData();
+            delteItems(); // מחיקת אפשרויות העידכון 
+            var titleElement = document.getElementById('updateh');
+            titleElement.innerHTML = 'We received the order update'; // עידכון הכותרת שבוצע העידכון 
+
+        }
+
+        function updateScreenWithOrderData() {
+                document.getElementById("pizza-size").textContent = orderData.pizzaSize.value;
+                document.getElementById("olives").textContent = orderData.olives.value;
+                document.getElementById("onion").textContent = orderData.onion.value;
+                document.getElementById("parmesan").textContent = orderData.parmesan.value;
+                document.getElementById("tomatoes").textContent = orderData.tomatoes.value;
+                document.getElementById("mozzarella").textContent = orderData.mozzarella.value;
+                document.getElementById("price").textContent = orderData.price;
+
+                var orderUrl =  '/update?pizzaSize=' + encodeURIComponent(orderData.pizzaSize.value)
+                 + '&olives=' + encodeURIComponent(orderData.olives.value)
+                 + '&onion=' + encodeURIComponent(orderData.onion.value)
+                 + '&parmesan=' + encodeURIComponent(orderData.parmesan.value)
+                 + '&tomatoes=' + encodeURIComponent( orderData.tomatoes.value)
+                 + '&mozzarella=' + encodeURIComponent(orderData.mozzarella.value)
+                 + '&price=' + encodeURIComponent(orderData.price);
+                
+                 // שליחה לשרת לעדכן את ההזמנה במסד הנתונים
+                window.location.href = orderUrl;
+         
+        }
+        // מוחק מהמסך את כל מה שהיה קשור לעידכון
+        function delteItems() {
+                var labelElement1 = document.querySelector('label[for="pizza-size"]'); // Find the label element
+                var selectElement1 = document.getElementById('pizza-size-select'); // Find the select element
+                labelElement1.parentNode.removeChild(labelElement1);
+                selectElement1.parentNode.removeChild(selectElement1);
+                var labelElement2 = document.querySelector('label[for="olives"]'); // Find the label element
+                var selectElement2 = document.getElementById('olives-select'); // Find the select element
+                labelElement2.parentNode.removeChild(labelElement2);
+                selectElement2.parentNode.removeChild(selectElement2);
+                var labelElement3 = document.querySelector('label[for="onion"]'); // Find the label element
+                var selectElement3 = document.getElementById('onion-select'); // Find the select element
+                labelElement3.parentNode.removeChild(labelElement3);
+                selectElement3.parentNode.removeChild(selectElement3);
+                var labelElement4 = document.querySelector('label[for="mozzarella"]'); // Find the label element
+                var selectElement4 = document.getElementById('mozzarella-select'); // Find the select element
+                labelElement4.parentNode.removeChild(labelElement4);
+                selectElement4.parentNode.removeChild(selectElement4);
+                var labelElement5 = document.querySelector('label[for="tomatoes"]'); // Find the label element
+                var selectElement5 = document.getElementById('tomatoes-select'); // Find the select element
+                labelElement5.parentNode.removeChild(labelElement5);
+                selectElement5.parentNode.removeChild(selectElement5);
+                var labelElement6 = document.querySelector('label[for="parmesan"]'); // Find the label element
+                var selectElement6 = document.getElementById('parmesan-select'); // Find the select element
+                labelElement6.parentNode.removeChild(labelElement6);
+                selectElement6.parentNode.removeChild(selectElement6);
+                var buttonElement = document.querySelector('button[onclick="goupdate()"]'); // Find the button element
+                buttonElement.parentNode.removeChild(buttonElement); // Remove the button element
+            
+        }
+        </script>
+       
+      
+    </div>
+    <!-- -----------------  2 תמונות בסוף ------------- -->
+    <div class="image-order-end">
+        <img src = "images-status/down.jpg" id= "image-orderend-pizza"> 
+        <img src = "images-status/down2.jpg" id= "image-orderend-pizza2"> 
+    </div>
+
+    <footer>
+        <p> Copyright &copy; 2014, All Rights Resvrevd</p>
+    </footer>
+
+</body>
+</html>    

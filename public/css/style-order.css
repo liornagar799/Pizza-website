@@ -1,0 +1,323 @@
+    /* Basic CSS for styling the menu and content */
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+     /* ---------------------------כותרת-------------------**/
+    header {
+        background-color: rgb(29, 104, 87);;
+        padding: 10px;
+        display: flex;
+        align-items: center; /* Vertically align elements in the middle */
+    }
+
+     /* ---------------------------צרו קשר + מספר טלפון-------------------**/
+    .text-container {
+        font-family: Arial Rounded MT Bold ;
+        text-align: center;
+        margin-left: 750px;
+        color: rgb(250, 247, 247);
+        font-weight: bold;
+        font-size: 12px;
+        display: flex; /* Create a flex container for the text elements */
+        flex-direction: column; /* Stack text elements vertically */
+       
+    }
+
+    /* --------------------------- צרו קשר -------------------**/
+    .near-logo{
+        margin-top: -10px;
+    }
+
+    /* ---------------------------  המספר טלפון -------------------**/
+    .number{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* ---------------------------הרווח בין צרו קשר ל- מספר טלפון-------------------**/
+    .near-logo,.number {
+        margin-bottom: -10px; /* Adjust this value to control the spacing between columns */
+    }
+
+    /* ---------------------------   לוגו -----------------**/
+    #logo {
+        width: 250px; /* גובה אופציונלי */
+        height:120px; /* רוחב אופציונלי */
+        border-radius: 50%; /* עיגול פינות */
+        overflow: hidden; /* הסתרת חלקים מחוץ לעיגול אם התמונה אינה ריבועית */
+        
+        
+    }
+    /* ---------------------------  תמונת טלפון -------------------**/   
+    #phone {
+        margin-left: 20px;
+        width: 50px; /* גובה אופציונלי */
+        height:50px; /* רוחב אופציונלי */
+        
+        
+    }
+/*--------------------תמונה ראשית ----------------------------# */
+
+.all-page{
+    background-color:  rgb(177, 94, 78);
+
+}
+
+.image-order{
+    display: flex;
+    align-items: center; /* Vertically align elements in the middle */
+}
+
+#image-order-page{
+    width: 100%; /* גובה אופציונלי */
+    height: 100%; /* רוחב אופציונלי */
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+}
+
+/*-------------------בחירת  המוצרים בהזמנה ---------------------- */
+
+.order{
+    width: 80%;
+    background-color:  rgb(177, 94, 78);
+    border: 2px solid  #1b1919; /* Add a 2px solid border */
+    padding-bottom: 20px;
+    border-radius: 15px; /* Add rounded corners */
+    margin: 0 auto; /* Add this to center horizontally */
+    margin-top: -10px;
+}
+
+.pizza-size{
+    text-align: center;
+    color: rgb(250, 247, 247);
+    font-size: 30px;
+
+}
+/* ---------------------- השמות ----------------------- */
+label{
+    text-align: center;
+    color: rgb(250, 247, 247);
+    margin-left: 10px;
+    font-size: 20px;
+    
+}
+/* ---------------------- כל המחלקה של התוספות  ----------------------- */
+.pizza-Toppings{
+    text-align: center;
+    color: rgb(250, 247, 247);
+    font-size: 30px;
+    margin-top: 30px;
+
+}
+/* ---------------------- פסקאת הסבר ----------------------- */
+.topping-data{
+    font-size: 15px;
+}
+
+/* ---------------------- הכותרת ----------------------- */
+.SelectToppingsh{
+    margin-top: 50px;
+}
+
+.cost{
+    text-align: center;
+    color: rgb(250, 247, 247);
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+
+/**---------------------תמונות באמצע הבחירה *-------------------------------**/
+
+
+.image-order-down{
+    display: flex;
+    align-items: center; /* Vertically align elements in the middle */
+}
+#image-order-pizza{
+    width: 45%; /* גובה אופציונלי */
+    height: 45%; /* רוחב אופציונלי */
+    margin-right: 20px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+#image-order-pizza2{
+    width: 45%; /* גובה אופציונלי */
+    height: 45%; /* רוחב אופציונלי */
+    margin-right: 10px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+
+
+
+
+
+/* --------------------*משלוח -----------------------* */
+
+
+
+/* בחירה משלוח או איסוף */
+.dlivry{
+    display: flex;
+    text-align: center;
+    color: rgb(250, 247, 247);
+    font-size: 20px;
+    width: 90px; /* גובה אופציונלי */
+    height:90px; /* רוחב אופציונלי */
+    align-items: center;
+    margin: 0 auto;
+    margin-right:600px;
+    font-family: Arial;
+    margin-bottom: 50;
+    margin-top: 50px;
+}
+
+
+/* --------------------------- התמונות ---------------------- */
+
+#dlivry1{
+    /* margin-left: 20px; */
+    width: 90px; /* גובה אופציונלי */
+    height:90px; /* רוחב אופציונלי */
+    border-radius: 50%; /* עיגול פינות */
+    overflow: hidden; /* הסתרת חלקים מחוץ לעיגול אם התמונה אינה ריבועית */
+    
+    
+    
+}
+
+
+#dlivry2{
+    margin-left: 20px;
+    width: 90px; /* גובה אופציונלי */
+    height:90px; /* רוחב אופציונלי */
+    border-radius: 50%; /* עיגול פינות */
+    overflow: hidden; /* הסתרת חלקים מחוץ לעיגול אם התמונה אינה ריבועית */
+    margin-top: 10px;
+    
+    
+}
+
+/* --------------------------- הכותרת לכל אופציה---------------------- */
+
+.dlivry1{
+   
+    color: rgb(250, 247, 247);
+    font-size: 20px;
+    margin-top: 50px;  
+    margin-right: 80px;
+   
+
+}
+
+.dlivry2{
+    
+    color: rgb(250, 247, 247);
+    font-size: 20px;
+    margin-top: 50px;  
+    margin-left: 80px;
+   
+}
+
+/* ---------------------------- הכותרת של המשלוח-------------------------- */
+.Choose{
+    text-align: center;
+    color: rgb(250, 247, 247);
+    font-size: 30px;
+    margin-top: 60px; 
+    margin-bottom: 50;
+}
+
+
+/*------------------------- הערה --------------------------------*/
+.Comment{
+    text-align: center;
+    color: rgb(250, 247, 247);
+    font-size: 20px;
+    margin-top: 80px; 
+    margin-bottom: 50;
+    
+}
+
+/* -----------------------התיבת טקסט + הכפתור -------------- */
+.comment-input{
+    width: 90px; /* גובה אופציונלי */
+    height:90px; /* רוחב אופציונלי */
+    align-items: center;
+    margin: 0 auto;
+    margin-right:500px;
+    font-family: Arial;
+    font-weight: bold;
+    margin-bottom: 50;
+
+}
+
+/* ------------------------ הכפתור של התגובה--------------------------- */
+.add-comment{
+    margin-left: 60px;
+
+}
+
+
+/* ------------------------ הכפתור של האישור הזמנה --------------------------- */
+.btn {
+    width: 30%;
+    padding: 10px;
+    background-color: #e12a2a;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 350px;
+    margin-top: 60px;
+    
+    
+}
+
+/* -------------------- תמנות בסוף ------------------------ */
+
+.image-order-end{
+    display: flex;
+    align-items: center; /* Vertically align elements in the middle */
+}
+#image-orderend-pizza{
+    width: 35%; /* גובה אופציונלי */
+    height: 40%; /* רוחב אופציונלי */
+    margin-right: 20px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 130px;
+
+}
+#image-orderend-pizza2{
+    width: 35%; /* גובה אופציונלי */
+    height: 40%; /* רוחב אופציונלי */
+    margin-right: 10px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+
+
+
+  /*------------------------כותרת תחתונה------------------ */
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    justify-content: space-between;
+    background-color:  rgb(29, 104, 87);
+    
+}

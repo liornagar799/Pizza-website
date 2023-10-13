@@ -1,0 +1,315 @@
+    /* Basic CSS for styling the menu and content */
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    /* ---------------------------כותרת-------------------**/
+    header {
+        background-color: rgb(29, 104, 87);
+        padding: 10px;
+        display: flex;/*the elements inside the container can adjust their size and position dynamically */
+        align-items: center; /* Vertically align elements in the middle */
+    }
+     
+     /* ---------------------------צרו קשר + מספר טלפון-------------------**/
+    .text-container {
+        font-family: Arial Rounded MT Bold ;
+        text-align: center;
+        margin-left: 750px;
+        color: rgb(250, 247, 247);
+        font-weight: bold;
+        font-size: 12px;
+        display: flex; /* Create a flex container for the text elements */
+        flex-direction: column; /* Stack text elements vertically */
+        
+    }
+ 
+    /* --------------------------- צרו קשר -------------------**/
+    .near-logo{
+        margin-top: -10px;
+    }
+     /* ---------------------------  המספר טלפון -------------------**/
+    .number{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    /* ---------------------------הרווח בין צרו קשר ל- מספר טלפון-------------------**/
+    .near-logo,.number {
+        margin-bottom: -10px; /* Adjust this value to control the spacing between columns */
+    }
+
+    /* ---------------------------   לוגו -----------------**/
+    #logo {
+        width: 250px; /* גובה אופציונלי */
+        height:120px; /* רוחב אופציונלי */
+        border-radius: 50%; /* עיגול פינות */
+        overflow: hidden; /* הסתרת חלקים מחוץ לעיגול אם התמונה אינה ריבועית */
+        
+     /* ---------------------------  תמונת טלפון -------------------**/   
+    }
+    #phone {
+        margin-left: 20px;
+        width: 50px; /* גובה אופציונלי */
+        height:50px; /* רוחב אופציונלי */
+        
+        
+    }
+ 
+    /* -------------------------- תמונה גדולות------------------------- */
+
+    #image-home-page1{
+        width: 100%;
+        display: flex;
+        align-items: center; /* Vertically align elements in the middle */
+        margin-right: 50px;
+        border: 2px solid  rgb(15, 16, 16); /* Add a 2px solid border */
+        border-radius: 15px; /* Add rounded corners */
+       
+    }        
+
+    #image-home-flour{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center; /* Vertically align elements in the middle */
+        margin-right: 50px;
+        margin-left: 70px;
+        margin-top: 100px;
+       
+       
+    }
+  
+    
+    /* -------------------------------רקע ----------------------- */
+
+    .all-page{
+        background-color:rgb(146, 201, 162);
+    }
+
+    /* ----------------------------- מידע ------------------------------- */
+    
+    /* ----------------------------- כל הקטע ------------------------------- */
+    .aboutus{
+       margin-top: -30px;
+        display: flex;
+        
+    }
+     /* ----------------------------- הכותרת ------------------------------- */
+    .about-us {
+        text-align: center; /* למרכז את הטקסט באמצעות CSS */
+        font-weight: bold; /* להגדיר את הטקסט כמודגש */
+        color: black; /* להגדיר את הטקסט בצבע שחור */
+        font-size: 60px;
+        font-family: Arial Rounded MT Bold ;
+        background-color:rgb(146, 201, 162);
+        margin-top: 100px;
+    }
+    
+     /* ----------------------------- המידע הרשום ------------------------------- */
+    .data{
+        text-align: center; /* למרכז את הטקסט באמצעות CSS */
+        color: black; /* להגדיר את הטקסט בצבע שחור */
+        font-size: 20px;
+        font-family: Arial Rounded MT Bold;
+        background-color:rgb(146, 201, 162);
+        margin-bottom: 100px;
+        margin-right: 20px;
+        margin-top: -20px;
+        
+    }
+    /* -----------------------------  הכותרת + המידע הרשום ------------------------------- */
+    .databout {
+
+        font-family: Arial Rounded MT Bold ;
+        text-align: center;
+        color: rgb(250, 247, 247);
+        font-size: 12px;
+        display: flex; /* Create a flex container for the text elements */
+        flex-direction: column; /* Stack text elements vertically */
+        gap: 0px; /* Adjust this value to control the spacing between columns */
+    }
+
+    /*-----------------------מידע שלישיה -------------------------------*/
+
+
+    .box-container {
+        padding-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Three equally sized columns */
+        gap: 3px;
+        align-items: flex-start; 
+        justify-content: center;/* evenly distributes the available space to push the items towards the center of the container.*/
+        padding-left: 10px;
+        padding-right: 5px;
+        color:white;
+
+    }
+     
+  
+    .box-container .box1{
+        border: 2px solid  rgb(15, 16, 16); /* Add a 2px solid border */
+        background-color: rgb(29, 104, 87);
+        border-radius: 5px;
+        padding: 3px;
+        text-align: center;
+        margin-right: 19px;
+       
+       
+     }
+
+     
+    .box-container .box2{
+        border: 2px solid  rgb(15, 16, 16); /* Add a 2px solid border */
+        background-color:  rgb(29, 104, 87);
+        border-radius: 5px;
+        padding: 3px;
+        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+       
+    }
+
+    .box-container .box3{
+        border: 2px solid  rgb(15, 16, 16); /* Add a 2px solid border */
+        background-color:  rgb(29, 104, 87);
+        margin-right: 5px;
+        border-radius: 5px;
+        padding: 3px;
+        text-align: center;
+        margin-left: 15px;
+       
+      
+     }
+     
+      /* ---------------------התמונות של השלישית מידע -------------------------- */
+    .box-container #imagebox1{
+        width: 40%; /* גובה אופציונלי */
+        margin-bottom: 4px;
+        border-radius: 50%; /* עיגול פינות */
+        overflow: hidden; /* הסתרת חלקים מחוץ לעיגול אם התמונה אינה ריבועית */
+        
+    }
+
+   .box-container #imagebox2{
+        width: 40%; /* גובה אופציונלי */
+        margin-bottom: 4px;
+        border-radius: 50%; /* עיגול פינות */
+        overflow: hidden; /* הסתרת חלקים מחוץ לעיגול אם התמונה אינה ריבועית */
+        
+
+    }.box-container #imagebox3{
+        width: 40%; /* גובה אופציונלי */
+        margin-bottom: 4px;
+        border-radius: 50%; /* עיגול פינות */
+        overflow: hidden; /* הסתרת חלקים מחוץ לעיגול אם התמונה אינה ריבועית */
+        
+        
+    }
+     
+    /* ---------------------כותרות-------------------------- */
+    .box-container .box h3{
+        font-size: 5px;
+        color:rgb(241, 235, 235);
+    }
+     
+     /* ---------------------פסקאות-------------------------- */
+    .box-container .box p{
+        padding:2px;
+        line-height: 2;
+        font-size: 3px;
+        color:white;
+        width: 33%;
+    }
+
+ /*---------------------------------------התחברות*------------------------- */
+
+    .content {
+        padding: 20px;
+        margin-left: 20px;
+    }    
+    
+    .register-conect {
+        padding-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Three equally sized columns */ 
+        align-items: flex-start;
+        justify-content: left;
+        padding-left: 5px;
+        padding-right: 5px;
+    } 
+
+    /* ----------------------------מכיל את השלשיית תיבות והכפתור ----------------------- */
+    .register-div {
+        border: 2px solid  rgb(180, 18, 18); /* Add a 2px solid border */
+        border-radius: 15px; /* Add rounded corners */
+        padding: 20px; /* Add some padding to the form */
+        
+    }
+
+    /* ---------------------כותרת-------------------------- */
+    .registerh {
+        text-align: center; /* Center the heading */
+        font-size: 40px;
+        
+    }
+    
+    .box {
+        width: 80%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid rgb(29, 104, 87); /* Add a 1px solid border to input fields */
+        border-radius: 5px; /* Add rounded corners to input fields */
+        text-align: center;
+        margin-left: -5px;
+        margin-left: 25px;
+    }
+    
+    .btn {
+        width: 80%;
+        padding: 10px;
+        background-color: #e12a2a;
+        color: #fff;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer; /*כאשר משתמש מרחף עם העכבר מעל אלמנט זה, הסמן ישתנה לידי מצביע, מה שמציין שהאלמנט אינטראקטיבי וניתן ללחוץ עליו. */
+        text-align: center;
+        margin-left: 35px;
+        
+    }
+    
+
+ 
+    /*------------------------התמונה עם החץ ----------------- */
+    #arrow{
+        width: 90%; /* גובה אופציונלי */
+        height: 90%; /* רוחב אופציונלי */
+        margin-right: 10px;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+       
+    }
+
+    /*------------------------כותרת תחתונה------------------ */
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        background-color:  rgb(29, 104, 87);
+        
+    }
+    
+    /*------------------------התחברות אדמין ------------------ */
+    .adminconection {
+        margin-left: auto;
+        
+        
+    }
+    
+    
+    
+    
+    
