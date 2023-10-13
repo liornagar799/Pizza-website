@@ -13,7 +13,7 @@ In addition, there is the possibility of an admin login - which transfers to a m
 
 # 2. Admin page:
 
- <img width="900" src="https://github.com/einav242/BIG-DATA/blob/main/images/Astronomical%20Events%20%26%20Alerts.jpg">
+ <img width="900" src="[https://github.com/einav242/BIG-DATA/blob/main/images/Astronomical%20Events%20%26%20Alerts.jpg](https://github.com/liornagar799/Pizza-website/blob/main/image_screen/%D7%90%D7%93%D7%9E%D7%99%D7%9F.jpg)">
 
 
 On the page you can see:
