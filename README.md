@@ -2,7 +2,7 @@
 
 # 1. Home screen:
 
- <img width="900" src="https://github.com/einav242/BIG-DATA/blob/main/images/Astronomical%20Events%20%26%20Alerts.jpg">
+ <img width="900" src="image_screen/דף הבית.jpg">
 
 
 On the home screen you can see the logo, information about the pizzeria, in addition the user can enter initial details to start the order, and by pressing the button go to the order page.
@@ -25,7 +25,7 @@ On the page you can see:
    
 # 3. Order page:
 
- <img width="900" src="https://github.com/einav242/BIG-DATA/blob/main/images/Astronomical%20Events%20%26%20Alerts.jpg">
+ <img width="900" src="image_screen/הזמנה.jpg">
 
 
 We will reach this page after entering the first details on the home screen.
@@ -37,7 +37,7 @@ If a pizza size is not selected - a notification is sent to the user - please se
 
 # 4. Order status:
 
- <img width="900" src="https://github.com/einav242/BIG-DATA/blob/main/images/Astronomical%20Events%20%26%20Alerts.jpg">
+ <img width="900" src="image_screen/סטטוס.jpg">
 
 
 As you can see, all the order data appears on the screen and is updated every 15 seconds, in addition the customer can update the order, change pizza size or change toppings.
